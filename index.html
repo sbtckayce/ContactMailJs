@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Contact Mail JS</title>
+</head>
+<body>
+    <div class="container">
+        <form class="form__main">
+            <h3 class="form__heading">
+                Get in touch
+            </h3>
+            <input type="text" name="name" id="name" placeholder="Your Name" required>
+            <input type="email" name="email" id="email" placeholder="Email ID"required>
+            <input type="text" name="phone" id="phone" placeholder="Phone no." required>
+            <textarea name="message" id="message" cols="30" rows="10"
+            placeholder="How can we help you ?"></textarea>
+            <!-- <input type="submit" value="Send" class="form__submit"> -->
+            <button id="btn">Send</button>
+        </form>
+    </div>
+   
+   
+</body>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+    var btn =document.getElementById('btn');
+    btn.addEventListener('click',function(e){
+        e.preventDefault();
+        
+        var name =document.getElementById('name').value;
+        var email =document.getElementById('email').value;
+        var phone =document.getElementById('phone').value;
+        var message =document.getElementById('message').value;
+
+        var body = 'name + :'+name+'<br/> email :'+email +'<br/> phone :'+phone +'<br/> message :'+message
+
+
+
+
+        Email.send({
+    Host : "smtp.gmail.com",
+    Username : "19130110@st.hcmuaf.edu.vn",
+    Password : "fdeyvtwskcckrilw",
+    To : '19130110@st.hcmuaf.edu.vn',
+    From : email,
+    Subject : message,
+    Body : body
+}).then(
+  message => alert(message)
+);
+    })
+</script>
+</html>
